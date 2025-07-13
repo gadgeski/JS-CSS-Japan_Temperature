@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>日本の気温マップ</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🌡️ 日本の気温マップ</h1>
+        <p>地方別気温情報一覧</p>
+      </div>
+
+      <div class="main-content">
+        <div class="table-container">
+          <div class="summary-stats">
+            <div class="stat-card">
+              <div class="stat-value" id="avgTemp">--</div>
+              <div class="stat-label">平均気温</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="maxTemp">--</div>
+              <div class="stat-label">最高気温</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="minTemp">--</div>
+              <div class="stat-label">最低気温</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="hotRegions">--</div>
+              <div class="stat-label">猛暑地域</div>
+            </div>
+          </div>
+
+          <div class="legend">
+            <h4>🌡️ 温度区分</h4>
+            <div class="legend-item">
+              <div
+                class="legend-color"
+                style="
+                  background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+                "
+              ></div>
+              <span>涼しい (20℃以下)</span>
+            </div>
+            <div class="legend-item">
+              <div
+                class="legend-color"
+                style="
+                  background: linear-gradient(135deg, #ffb74d 0%, #ff9800 100%);
+                "
+              ></div>
+              <span>暖かい (21-28℃)</span>
+            </div>
+            <div class="legend-item">
+              <div
+                class="legend-color"
+                style="
+                  background: linear-gradient(135deg, #ff7043 0%, #f44336 100%);
+                "
+              ></div>
+              <span>暑い (29-35℃)</span>
+            </div>
+            <div class="legend-item">
+              <div
+                class="legend-color"
+                style="
+                  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+                "
+              ></div>
+              <span>非常に暑い (36℃以上)</span>
+            </div>
+          </div>
+
+          <table class="temperature-table">
+            <thead>
+              <tr>
+                <th>地方</th>
+                <th>現在気温</th>
+                <th>状態</th>
+                <th>体感</th>
+              </tr>
+            </thead>
+            <tbody id="temperatureTableBody">
+              <!-- 動的に生成される -->
+            </tbody>
+          </table>
+
+          <div class="controls">
+            <button class="btn" onclick="updateTemperatures()">
+              🔄 気温更新
+            </button>
+            <button class="btn secondary" onclick="sortByTemperature()">
+              🔥 温度順ソート
+            </button>
+            <button class="btn secondary" onclick="sortByRegion()">
+              📍 地域順ソート
+            </button>
+          </div>
+
+          <div class="timestamp">最終更新: <span id="lastUpdate"></span></div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+          <h3>👈 地方をクリックしてください</h3>
+          <p>各地方の詳細情報を表示します。</p>
+          <p><strong>使い方:</strong></p>
+          <ul>
+            <li>テーブルの行をクリックして詳細表示</li>
+            <li>気温更新ボタンで最新情報に更新</li>
+            <li>ソートボタンで並び替え</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
